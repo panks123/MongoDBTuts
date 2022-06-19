@@ -1,0 +1,29 @@
+                    ***** Indexing *****
+
+To optimize the query performance and to enhance the speed of queries indexes are used.
+
+Without using indexing, a query will serach all the documents present in the collection of the database. So t will fetch the result in more time.
+
+Note: We can see that how much time it takes using `db.collection_name.find().explain('executionStats')`.
+
+When our database will have millions of documents present then our queries will execute very slow.
+
+So when there is largr number of documents present and our priority is to read(i.e. query to fetch the data) data then we can apply Index for a key
+which we'll be using for the query.
+
+e.g.
+
+`db.products.createIndex({name: 1})` -> This will create 1 index for 'name' key of the products collection of the database.
+
+It will increase the speed of the query execution. It will reduce the no. of documents searched. (If index ws applied in the key containing only unique items then the no. of documents will be reduced to 1)
+
+* We should take care while doing indexing that if the data is mostly for read operation then we should apply Indexing
+    Otherwise, if the data is mostly for writing then Indexing should not be used frequently as it will decrease the speed of writing the data. Because it has to search accoerding to the index then it has to write the data.
+
+So we should always take decision that on which field indexing should be done
+
+`db.collection_name.getIndexes()` --> This command will fetch all the indexes applied to the collection of the database.
+
+Note : MongoDb automatically applies an index for '_id' key
+
+* To drop a index from the database collection, we use `db.collection_name.dropIndex()`

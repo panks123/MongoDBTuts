@@ -1,0 +1,14 @@
+                   ******* Connecting to MongoD process *******
+
+We can connect to Mongod process in many ways
+1. By using Mongo shell
+2. By using tools like compass
+3. By using other tools provided by some programming languages e.g. PyMong of Python , mongoose of Node.js etc.
+
+MongoDB Compass is the GUI tool to connect to the MongoD and perfom all the operations whatever we do with the mongo shell
+
+********************************
+
+Mongoose : Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It manages relationships between data, 
+           provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB.
+

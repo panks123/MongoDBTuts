@@ -1,0 +1,44 @@
+                                        Mongo DB
+
+* It is a NO SQL database
+* It is document oriented
+* Open source, cross platform document oriented database written in C++
+
+* Its salient features:
+    - Develop faster
+    - Deploy easier
+    - Scale bigger
+
+Q. What is document oriented database?
+
+>>> - The database which stores data as document oriented is a document oriented database
+    - MongoDB stores data as documents so it is known as a document oriented database
+    - Data is stored is BSON in MongoDB. BSON is like a JSON but the difference is that in BSON the type of the variable is declared e.g the data is integer, string.
+
+***
+ 
+If we relate MongoDB and SQL based databases then here in MongoDB
+- DATABASE is called same as DATABASE
+- TABLES is called as COLLECTIONS (Not exacctly but can be referred as)
+- ROWS is called as DOCUMENTS
+
+*                                    mongod and mongo
+
+- mongod and mongo are two processes
+
+* mongod - is the host process for the database. If we run this it will start the database and it will start keeeping the data in the data directory.
+
+* mongo - is the command line shell that connects to a specific instance of mongod. But suppose we don't have mongo command shell then we can connect to the instance of mongod using external applications like python, node.JS etc.
+
+* When we run the mongo with no parameters it defaults to a specific to connecting to the localhost on port 27017.
+
+* If we run mongo against an invalid host_machine:port combination then it will fail to connect.
+
+
+
+Here in this system while learning we've installed Mongo atalas not as a service because we'll be launching it manually
+everytime we'll need but
+In production servers we install it as service.
+
+
+Next -> Mongo shell commands

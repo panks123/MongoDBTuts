@@ -1,0 +1,11 @@
+use panksKart
+
+* Updating the database
+
+`db.items.updateOne({name: "Moto 30s"} , {$set: {price : 200}})` 
+>> Here there are two parameters passed to the updateOne() --> The first parameter is filter object which is used to match the documnets in the items collection of panksKart database
+--> And seconsd parameter says what to be updated if there is a match
+--> So the above command updates the price of the first match with name as  "Moto 30s" to 200 (price is updated to 200)
+
+`db.items.updateMany({name: "Moto 30s"}, {$set: {price: 399, sold: 300}})` --> This command updates the price to 399 and sold to 300 for
+all the matches with name as "Moto 30s" 

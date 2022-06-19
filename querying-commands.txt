@@ -1,0 +1,49 @@
+`use panksKart`
+
+* Searching/querying commands - for searching documents from the database
+
+`db.items.find()` -> This command will fetch all the items(i.e. documents) stored in the items collection of panksKart database
+
+`db.items.find({rating: 3.5})` -> This query will return all the documnents with rating = 3.5
+
+Note : We also have `db.collection_name.findOne( filter_object)` which returns the first matched document
+
+Note: `db.collection_name.find().pretty()` --> The pretty() method will prettify the result of find()
+
+Note: Whatever we write inside find() it is called filter object. So in the above query {rating: 3.5} is the filter object.
+
+`db.items.find({rating:{$gte:3.5}})` --> This query will return all the documnents with rating >= 3.5
+
+`db.items.find({rating:{$gt:3.5}})` --> This query will return all the documnents with rating > 3.5
+
+`db.items.find({rating:{$lt:3.5}})` --> This query will return all the documnents with rating < 3.5
+
+`db.items.find({rating:{$lte:3.5}})` --> This query will return all the documnents with rating <= 3.5
+
+* AND operator in the query -- For AND operation we put comma (,) between two filter objects
+
+`db.items.find({$and: [{rating: {$gte:3.5}}, {price: {$gt: 22000}}]})`
+
+* OR operator in the query 
+
+`db.items.find({$or: [{rating: {$gt: 3.5}}, {price: {$gt: 2900000}}]})` -->This query will return the documents with rating > 3.5 OR price> 29000
+
+*  We can pass secon parameter to the find() which is called projection, i.e what we actually want to see as output: It filters the columns we want to see in the document returned as output
+
+
+`db.items.find({rating: {$gt:3.5}}, {rating: 1})` -- This query will retrn all the documents with rating> 3.5 but inside these output documents it will show only object id and rating
+
+`db.items.find({rating: {$gt:3.5}}, {rating: 1, price: 1})` -- This query will retrn all the documents with rating> 3.5 but inside these output documents it will show only object id , rating and price
+
+`db.items.find({rating: {$gt:3.5}}, {rating: 0})` -- This query will retrn all the documents with rating> 3.5 but inside these output documents it will show all the things except rating
+
+`db.items.find({rating: {$gt:3.5}}, {rating: 0, price: 0})` -- This query will retrn all the documents with rating> 3.5 but inside these output documents it will show all the things except rating and price
+
+
+
+
+
+
+
+
+

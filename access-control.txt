@@ -1,0 +1,51 @@
+                                ****** Enable Access Control ******
+
+Enabling access control on a MongoDB deployment enforces authentication. With access control enabled, users are required to identify
+themselves and can only perform actions that adhere to the permissions granted by the roles assigned to their user.
+
+Steps: 
+
+1. First we add a user with 'userAdminAnyDatabase' role in the 'admin' database. Include aditional roles as needed for this user.
+e.g. the following will create a user 'myUserAdmin' in the 'admin' database with 'userAdminAnyDatabase' and the 'readWriteAnyDatabase' role. 
+
+`
+use admin
+db.createUser(
+    {
+        user: "myUserAdmin",
+        pwd: passwordPrompt(), // it will ask for the password input
+        roles: [ {role: "userAdminAnyDatabase", db: "admin"}, "readWriteAnyDatabase"]
+    }
+)
+`
+
+2. restart the mongod process
+
+3. Login to the database 
+
+    `
+        use admin;
+        db.auth("myUserAdmin", passwordPrompt())
+    `
+    >> Enter the password to login 
+
+4. Create additional useraccording to the deployment requirement
+
+    `
+    db.createUser(
+        {
+            user: "user1",
+            pwd: passwordPrompt(),
+            roles: [
+                {   role: 'readWrite', db: 'ecom'}, // In 'ecom' collection, only read and write permission will be allowed for user1.
+                { role: 'read', db: 'pizzas'} // In 'pizzas' collection only read operation will be allowed for user1.
+            ]
+        }
+    )
+    `
+
+    >> It will ask for password input >> After password input the 'user1' will be added.
+
+Now if we close the mongod process again and re-login as 'user1' by entering the credentials then for user1
+if we do 
+`show dbs` then only 'ecom' and 'pizzas' database will show for user1 and also the user can perform only the operation which are allowed. 

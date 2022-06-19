@@ -1,0 +1,17 @@
+`use panksKart`
+
+* Deleting data from database
+
+** Deleting single matching document 
+
+`db.items.deleteOne({price: 22000})` --> This command will delete the first document which is matching with filter object {price: 22000}
+
+** Deleting all the matching documnents
+
+`db.items.deleteMany({price: 129000})`  --> this command will delete all the matching documents with price = 129000
+
+Note: Delete command is like first searching and then Deleting, So we can pass the complex filter objects while deleOne() and deleteMany()
+
+e.g.
+
+`db.items.find({$and : [{price:129000}, {sold: 99}]})` 

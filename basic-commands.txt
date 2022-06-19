@@ -1,0 +1,22 @@
+Note all the commands will be quoted within ``
+
+`db` command shows the database mongod is using currently -- By default it uses test db -- we can change it by using `use db command`
+Note: `db` alwayts points to the current database mongod is using
+
+`use new_db_name` will start using the 'new_db_name' database(If it created then it will use that otherwise it will create and use that new db)
+
+`show dbs` will show all the databases in the mongod system
+
+`show collections` will show all the collections present in the currend DB mongod is using
+
+Note : It will show the name of the database and the collection only when atleast one document(row) is present in the collection of the database
+
+`db.new_collection` will create a new collection named 'new_collection' in the current database
+
+--> Also `db.createCollection('collection_name')` creates a new collection into the current database 
+
+
+`db.collection_name.insert({...data...})` will insert the data into the 'collection_name' of the current database 
+
+ 
+>> To delete a collection from the database we use the command `db.collection_name.drop()`
